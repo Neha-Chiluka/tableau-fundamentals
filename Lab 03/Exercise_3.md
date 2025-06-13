@@ -1,0 +1,346 @@
+
+# 📘 Lab 3: Hospital Visit Data Analysis
+
+#### Objective:
+
+In this lab, you will:
+
+- Connect Tableau to the hospital visit dataset.
+- Create diverse visualizations to analyze patient visits, revenue, patient risk profiles, and hospital stay durations across various departments, doctors, and time periods.
+- Master different chart types and data manipulation techniques in Tableau.
+
+## ✅ Report 1: Number of Patient Visits by Department .
+
+**Steps**:
+1. Drag `Department` to **Rows**.
+2. Drag `Number of Patient Visits` to **Columns**.
+3. Sort by descending `Number of Patient Visits` using the **Sort** icon
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/1.png?raw=true)
+
+-------------------------
+## ✅ Report 2: Revenue by Department 
+
+**Steps**:
+1. Create a new worksheet and name it **Revenue by Department**.
+2. Create a calculated field under `Measure Names`. Click on `Measure Names`, Then click on Analysis from the title bar and choose create calculated field.
+3. Then name the field as **Goal Met**?
+And write the below formula , press ok.
+`SUM([Revenue]) >= SUM([Goal])`
+
+4. Drag `Department` to **Rows**.
+5. Drag `Revenue` to **Columns**.
+
+5. Drag `Goal` to **Detail** on the Marks card to display exact values.
+7. Drag `Goal Met` to Color on the Marks Card.
+7. Drag `Date of Admit` to Filters and choose Year from the drop down.
+8. We have to create a Reference lines to set average line on the visual.
+- You can right click on the **Revenue axis** and click on **Add Reference Line**.
+- Then follow the below configuration for all the settings(Line, Band, Distribution and Box Plot)
+
+ **Optional: **
+- Sort by descending Revenue using the sort icon.
+- Edit the colors and some shadings as of your choice.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/2.png?raw=true)
+
+-----------
+
+## ✅ **Report 3: Year over Year Revenue (Bar-in-Bar)**
+
+**Steps**:
+1. Create a new worksheet called **Year over Year Revenue (Bar-in-Bar)**.
+2. Drag `Department Type` to **Rows**.
+3. Drag `Revenue` to **Columns**.
+4. Drag and drop `Date of Admit` in the **Color** and Size on the marks card. Set both of them to **Year** from the dropdown
+5. Click on the Standard View dropdown and choose **Entire View**. 
+
+You can experiment with colors and shading further by exploring formatting options.
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/3.png?raw=true)
+
+
+## ✅ **Report 4: ICU and Neonatal**
+
+**Steps**:
+1. Create a worksheet named **ICU and Neonatal**.
+2. Drag `Department` to **Rows**.
+3. Drag `Number of Patient Visits` to **Columns**.
+4. Create a **group** for **Department**. To do that 
+- Right-click on Department in the data pane → Create → Group
+
+- Select ICU and Neonatal, then click Group
+
+- Rename the group as **ICU & Neonatal**
+
+- Click OK
+
+5 . Drag `Department (group)` to the Color shelf on the Marks card
+6.Drag `Department (group)` to the Filters Pane, just so you can filter between the items.
+7.To only show value labels for ICU & Neonatal
+
+Create a Calculated field.
+
+**Formula:**
+
+`IF ATTR([Department (group)]) = "ICU & Neonatal" THEN SUM([Number of Patient Visits]) END`
+
+Drag and drop this field on Label!
+
+Now you can see only the two Departments being highlighted along their values (i.e number of patient visits)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/4.png?raw=true)
+
+
+---
+
+## ✅ **Report 5: Built-in Date Hierarchy **
+
+**Steps**:
+1. Create a worksheet called **Built-in Date Hierarchy**.
+2. Drag `Number of Patients` to **Rows**.
+3. Drag `Date of Admit` to **Columns**. Then click on the + icon beside Year on the column shelf. It will automatically shift to Quarter and show you the Years 2018 and 2019 along respective Quarters
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/5.png?raw=true)
+
+---
+
+## ✅ Report 6:  Date Parts and Date Values
+
+
+**Steps**:
+1. Create a worksheet named **Date of Admits by Patients**.
+2. Drag `Date of Admits` to **Rows**.
+3. Drag `Number of Patient Visits` to **Columns`.
+4. Click on the dropdown of `Date of Admits` column and choose **Month**.
+5. Click on the **Label** from the **Marks** Card , click on **show mark labels**
+
+Simlarly do the same steps in a new worksheet name it **Date Values**. This time just choose **Month** and **descrete** option from the dropdown for `Date of Admits` column . 
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/6.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/7.png?raw=true)
+
+--------------------------------
+
+## ✅ Report 7:  Number of Patient Visits Over Time
+
+
+**Steps**:
+1. Create a worksheet named **Number of Patient Visits Over Time**.
+2. Drag `Number of Patient Visits` to **Rows**.
+3. Drag `Date of Admits` to **Columns`.
+Choose Month option from the column shelf.
+4. Drag `Date of Admits` onto **Color** and **Label** of the marks card. Choose **Year** option from the dropdown for both the items.
+5. Click on the **Label** from the **Marks** Card , click on **show mark labels**.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/8.png?raw=true)
+
+----------------
+
+
+## ✅ Report 8:  Patient Admissions by Day (Heat Map)
+
+
+**Steps**:
+1. Create a worksheet named **Patient Admissions by Day (Heat Map)**.
+2. Drag `Date of Admits` to **Rows**.
+Select **Month** from the dropdown
+3. Drag `Date of Admits` to **Columns`.
+Select Day from the dropdown
+4. Drag and drop the `Number of Patient Visits` onto Color on the Marks card
+4. Change the view as **Entire View** from the view dropdowm on the title bar.
+5. Click on the **Label** from the **Marks** Card , click on **show mark labels**
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/9.png?raw=true)
+
+---
+
+## ✅ Report 9:  Patient Visits (Gantt Chart)
+
+
+**Steps**:
+1. Create a worksheet named **Patient Visits (Gantt Chart)**.
+2. Drag `Doctor` & `Patient Name to **Rows**.
+3. Drag `Date of Admits` to **Columns`.
+4. Create a calculated field 'Days in Hospital'
+
+**Formula**
+
+`DATEDIFF('day', [Date of Admit], [Date of Discharge])`
+
+
+4. Drag and drop the `Days in Hospital` onto **Size** on the Marks card
+4. Drop `Department` in filters and choose ER
+6. Drop `Date of Adimit` in the filters and choose **2019 year**
+
+Make sure you keep `Date of Adimit` the as exact date. You can find this by clicking the dropdown of the column.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/10.png?raw=true)
+
+## ✅ Report 10:  Patient Risk
+
+**Steps**:
+1. Create a worksheet named **Patient Risk**.
+2. From Hospital Visits.csv, drag:
+
+- `Department Type` → Rows
+
+- `Number of Patient Visits` → Columns
+
+3. Drag `Patient Risk Profile` → Color (under Marks card)
+4. Sort the axis by desending and change the view to **Entire View**
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/11.png?raw=true)
+
+## ✅ Report 11:  Patient Risk (Percent per Department Type)
+
+**Steps**:
+1. Create a worksheet named **Patient Risk (Percent per Department Type)**.
+2. drag:
+
+- `Department Type` → Rows
+
+- `Number of Patient Visits` → Columns
+3. Create a table calculation , you can find this in the drop-dowm. Follow the below  configuration
+
+3. Drag `Patient Risk Profile` → Color (under Marks card)
+4. Drag `Number of Patient Visits` → Label (under Marks card)
+4. Create a table calculation for **Number of Patient Visits** , you can find this in the drop-dowm. Follow the below  configuration
+
+Note: You can adjust the decimal points by right clicking on the columns and removing the decimal points.
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/12.png?raw=true)
+
+## ✅ Report 12:  Patient Risk (side-by side views)
+
+Follow the same steps as Report 10.
+
+Drag **Number of Patient Visits** again to columns and adjust the percentages/values by using the formatting option.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/13.png?raw=true)
+
+## ✅ Report 13:  Days in the Hospital
+
+Drag and drop. 
+- Department to Color
+- Days in Hospital to Size
+- Doctor and Patient Name to Detail
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/14.png?raw=true)
+
+## ✅ Report 14:  Days in the Hospital ( by branch)
+
+1. Drag and drop. 
+- Department to Color
+- Days in Hospital to Size
+- Doctor and Patient Name to Detail
+
+2. Drop Hospital Branch to Rows.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/15.png?raw=true)
+
+## ✅ Report 15:  Patient Visits over Time (area chart)
+
+1. Drag and drop. 
+ `Date of Admit` in **Column** (Change from Year to Month from the dropdown)
+ `Number of Patients` in **Rows**
+2. Drop Hospital Branch to Color
+4. Select **Area chart** from **show me** visuals
+
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/16.png?raw=true)
+
+
+
+## ✅ Report 16:  Patient Visits over Time (area chart - percent of total)
+
+You can just duplicate the above report or follow the same steps.
+
+1. Add a table calculation for `Number of patient Visits`. Use the below configuration.
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/17.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/17.2.png?raw=true)
+
+## ✅ Report 17:  Revenue by Branch (Pie Chart)
+
+1. Drag and drop. 
+- Hospital Branch to Color and Label
+- Revenue to Label twice
+For one of the Revenue, add a table calculation for it. Use the below configuration.
+2. Choose **Pie chart** from the visuals
+- Doctor and Patient Name to Detail
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/18.png?raw=true)
+
+
+## ✅ Report 18:  Average Length of Stay by Doctor
+
+1. Drag and drop. 
+- Days in Hospital to Columns ( Change the aggregate to Average)
+- Department type to Rows
+2. On the **Marks** dropdown select **Circle**
+3. Drop **Department** Type to **Color** 
+4. Drop **Doctor** to **Detail**
+5. Add a reference line and follow the below configuration. 
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/19.png?raw=true)
+
+## ✅ Report 19:  Average Length of Stay by Doctor (jittering)
+
+Follow the same steps as above report.
+- Click on arrow beside Rows and select **New Calculation**. Name it **Index** and add a table calculation. Follow the below configuration.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/20.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/20.2.png?raw=true)
+
+## ✅ Report 20:  Average Length of Stay by Doctor (Box Plot)
+
+1. The Same configuration as above.
+2. Remove the Index from the Rows.
+3. Select Box and Whiskers plot from the visual list. 
+4. It changes the rows and columns. Just bring back the original placement. (i.e - Days in Hospital to Columns and Department type to Rows)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/21.png?raw=true)
+
+## ✅ Report 21:  Minutes to Service (histogram)
+
+1. Right click on Minutes to Service -> Create-> bins
+Adjust the bin size to 2
+2. Drop `Minutes to Service(bins)` to Columns
+3. Drop `Patient Risk Profile` and `Minutes to Service` on **Rows**
+4. Set `Minutes to Service` as countinuous .
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/22.png?raw=true)
+
+
+----------
+
+## ✅ Report 22:  Revenue and Patient Visits by Department
+
+
+1. Drop `Revenue` to Columns
+2. Drop `Number of Patients` on **Rows**
+4. Set `Department` to Label
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/23.png?raw=true)
+
+---
+## ✅ Report 23:  Number of Patient Visits (Combination Chart)
+
+
+1. Drop `Date of Admit` to **Columns** (Choose Month)
+2. Drop `Number of Patients` on **Rows** twice
+3. On the Marks Card, To one of the Sum(Number of Patients) change the type to Bar
+And on another Sum(Number of Patients)-> Drop `Hospital Branch` on `Color`
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_3/24.png?raw=true)
+
+-------------
