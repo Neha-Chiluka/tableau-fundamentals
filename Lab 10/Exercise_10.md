@@ -1,0 +1,190 @@
+
+# 📘 Lab 10: Advanced Charting and Table Calculations in Tableau
+
+#### Objective:
+
+In this lab, you will:
+
+1. Connect Tableau to Superstore data to perform sophisticated analysis.
+2. Master the creation of advanced chart types, including Bump Charts, Waterfall Charts, Step Line Charts, Spark Lines, Dumbbell Charts, Unit Charts, and Marimekko Charts.
+3. Apply complex table calculations such as ranking, window functions, and nested calculations to derive deeper insights.
+4. Utilize advanced formatting and animation techniques to enhance data visualization and storytelling.
+
+
+### ✅ **Report 1:Change in State Rankings for West Region Report**
+
+
+1. Drag **Order Date** to the Columns shelf.(Set to Year)
+2. Drop **Sales** in Rows ( Double tap and enter `Rank(Sum(Sales))` )
+3. Drop **Order Date** in filters (Choose year)
+4. Drop `Region` -> West in filters
+5. Drop `State` in **Label**
+6. Add a table calculation for Sales. Choose **states** in Specifc Dimensions
+
+Set the label configuration as below and also set the visual to Entire View
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/1.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/1.1.png?raw=true)
+
+---
+
+### ✅ **Report 2: Bump Chart Report**
+
+Just duplicate the above report. Remove Order date from the Filters. 
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/2.png?raw=true)
+
+---
+
+### ✅ **Report 3: Waterfall ChartReport**
+
+
+1. Drag **Department**  and `Category` to the Columns shelf.
+2. Drop **Profit** in Rows follow the below configuration
+
+3. Drop `Profit` in **Color** and **Size**
+4. Double tap on ` Profit and enter -SUM([Profit])`
+5. In **Marks** card and choose **Gantt** Bar
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/3.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/3.1.png?raw=true)
+
+----
+
+### ✅ **Report 4: Step Lines Report**
+
+
+1. Drag **Department**  and `Category` to the Columns shelf.
+2. Drop **Profit** in Rows follow the below configuration
+
+3. Drop `Category` in filters. Choose all the items.
+4. Add `Profit` in **Color**
+5. Set the **Marks** Card to Line type. Once you set that, you will be able to see the path option. You can set the line type to Step.
+
+Change the view to Entire View
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/4.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/4.1.png?raw=true)
+
+-----
+
+
+### ✅ **Report 5: Spark Lines Report**
+
+
+1. Drag `Order Date` to the Columns shelf. Choose as Quarter
+2. Create calculated fields for the below using the approriate formulas
+
+- Last Sales - `IF LAST() == 0 THEN SUM([Sales]) END`
+- Min Sales - `WINDOW_MAX(SUM([Sales]))`
+- Max Sales - `WINDOW_MIN(SUM([Sales]))`
+
+3. Drop **Category** , `Min Sales`, `Max Sales`, `Sales` and `Last sales` in Rows.
+
+4. Add table calculation for Min , Max and Last Sales as below
+
+**Compute using - Table(across)**
+
+5. For Sales set it as Line and for Last sales as Circle
+
+Change the Type as **Fit Height**
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/5.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/5.1.png?raw=true)
+
+-----
+
+### ✅ **Report 6: Dumbbell Chart **
+
+
+
+1. Drag **Profit** to the Columns shelf twice.
+2. Drop **Category** in Rows 
+3. Add `Region` to Filters( Choose West and East)
+
+4. For one of `Sum(Profit)` set it to Line. Pull Region to path
+5. For another `Sum(Profit)` set it to Circle. Pull Region to Color
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/6.png?raw=true)
+
+
+ -----
+ ### ✅ **Report 7: Unit Chart Report**
+
+1. Drop **Region** in Rows. Sort as Desending later
+2. Create calculated field as Late Shipping.
+
+**Formula**
+
+`DATEDIFF('day', [Order Date], [Ship Date]) > 14`
+
+Drop this field in Filters and set as True
+
+3. Drop `Customer Id` in detail.
+4. Under **Marks** Card choose shape as Type.
+5. Click on the Shape -> More shapes -> Gender , choose any gender for icons
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/7.png?raw=true)
+
+
+---------
+
+### ✅ Report 8: Marimekko Chart  
+
+1. Create calculated field for `Sales for region`
+
+**Formula**
+
+```python
+//X Axis Location
+
+IF FIRST() == 0
+    THEN MIN({EXCLUDE [Department] : SUM(Sales)})
+ELSEIF LOOKUP(MIN([Region]), -1) != MIN([Region])
+    THEN PREVIOUS_VALUE(0) + MIN({EXCLUDE [Department] : SUM(Sales)})
+ELSE
+    PREVIOUS_VALUE(0)
+END
+
+```
+Drop this in Columns.Set the Table calculation as below
+
+
+2. Drop Sales in Rows and set the below table calculation.
+
+Drop the following in Marks card accordingly.
+
+**Region** -> Text and Region
+Department -> Detail and Label
+Sales -> Size (double tap to enter the formula. {EXCLUDE [Department] : SUM(Sales)})
+Sales -> Label twice
+
+Set Marks card to Bar type
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/8.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/8.1.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/8.2.png?raw=true)
+
+------------------
+
+
+### ✅ **Report 9 : Sales v. Profit**
+
+1. Drag **Profit** to the Columns shelf.
+2. Drop **Sales** and Type of Sale in Rows 
+3. Region to Filters. Set Use all
+4. Drop `Departmen`t in Color and Label
+Turn on animation using the menu option: Format | Animations...
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_10/9.png?raw=true)
+
+---
