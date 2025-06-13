@@ -1,0 +1,214 @@
+# 📘 Lab 9: Advanced Analytics & Forecasting in Tableau.
+
+#### Objective:
+
+In this lab, you will:
+
+2. Connect Tableau to diverse data sources, including Excel and Microsoft Access databases, using appropriate drivers.
+3. Analyze population trends over time, applying trend lines and segmenting by different periods.
+4. Explore real estate listings by price, size, and sale type, utilizing various statistical trend models (linear, logarithmic, power, polynomial) to understand relationships.
+5. Implement data clustering to identify segments within address data and visualize them on a map.
+6. Understand and apply distribution analyses, including standard deviation and reference bands.
+7. Perform basic time series forecasting on population data.
+
+---
+
+**Important steps to follow prior to the lab:**
+
+1. Import the files World Population, Real Estate and Testing Prediction (Microsoft access file)
+
+3. In order to import the database file, you need to download access database engine.
+
+5. Click on the below link and download the file , if you have 64bit Tableau version.
+ https://www.microsoft.com/en-us/download/details.aspx?id=54920&irgwc=1
+
+### ✅ **Report 1: Population Trends Report**
+
+From World Population file
+1. Drag **Year** to the Columns shelf.
+2. Drop **Population** in Rows 
+3. Drop Country Name in filters. Choose Australia and Afganistan for instance
+4. Drop Country name in Color and Text
+5. Add a Trend Line for both `Australia` and `Afganistan`
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/1.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/1.1.png?raw=true)
+
+---
+
+### ✅ **Report 2: Population Trends in Different Periods Report**
+
+From World Population file
+1. Drag **Year** and **Period** to the Columns shelf.
+2. Drop **Population** in Rows 
+3. Drop Country Name in filters. Choose Australia and Afganistan for instance
+4. Drop Country name in Color and Text
+5. Add a Trend Line for both `Australia` and `Afganistan`. This time factors add Period and Country Name.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/2.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/2.1.png?raw=true)
+
+---
+
+### ✅ **Report 3: Real Estate Listings Report**
+
+
+1. Drag **Size(Sq Ft)** to the **Columns** shelf.
+2. Drop **Price** in **Rows** 
+
+3. Drop `Type of Sale` in **Color**
+4. Add `Address` to **Detail**
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/3.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/3.2.png?raw=true)
+
+----
+
+### ✅ **Report 4: Types of Listings (Type as a Factor) Report**
+
+
+1. Drag **Size(Sq Ft)** to the Columns shelf.
+2. Drop **Price** and Type of Sale in Rows 
+
+3. Drop `Type of Sale` in **Color**
+4. Add `Address` to **Detail**
+5. Add reference line for both the lines. Check the box (Factors) for Type Of Sales.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/4.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/4.1.png?raw=true)
+
+-----
+
+
+### ✅ **Report 5: Types of Listings (Type NOT a Factor) Report**
+
+
+Duplicate the above report and just uncheck the box for (Factors) for Type Of Sales
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/5.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/5.1.png?raw=true)
+
+-----
+
+### ✅ **Report 6: Linear Trend**
+
+
+
+1. Drag **Size(Sq Ft)** to the **Columns** shelf.
+2. Drop **Price** and `Type of Sale` in **Rows** 
+3. Add `Address` to **Detail**
+
+4. Add a reference line for the graph as a Linear Line  .
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/6.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/6.1.png?raw=true)
+
+ -----
+ ### ✅ **Report 7: Logarithmic Report**
+
+Duplicate the above report and set the trend line as **Logarithmic**
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/7.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/7.1.png?raw=true)
+
+---------
+
+### ✅ Report 8: Power Report 
+
+Duplicate the above report and set the trend line as **Power**
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/8.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/8.1.png?raw=true)
+
+------------
+### ✅ **Report 9 : 3rd Degree Polynomial**
+
+1. Drag **Size(Sq Ft)** to the **Columns** shelf.
+2. Drop **Price** and `Type of Sale` in **Rows** 
+3. Add `Address` to **Detail**
+4. Choose a Polynomial. Set the configuration.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/9.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/9.1.png?raw=true)
+
+---
+### ✅ **dasboard :Testing Predictions **
+
+Crate a dashboard by adding the above report.
+
+You can see the relationship between the 3rd degree polynomial trend and the test of predictions.  Highlighting of Address has been turned on, so notice that selecting all marks above or below the zero line on the Testing Predicutions view results in all marks above or below the curve being selected in the trend view.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/10.png?raw=true)
+
+
+------------
+### ✅ **Report 10  :Clustering of Addresses **
+
+1. Drag **Size(Sq Ft)** to the **Columns** shelf.
+2. Drop **Price** and `Type of Sale` in **Rows** 
+3. Add `Address` to **Detail**.
+4. Create a group for `address`. Name it is as `Address(clusters)` . Set the groups as Mid-range , Low - Price Size and High Price & Size
+5. Drop this field in **Color**
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/11.png?raw=true)
+
+---------
+### ✅ Report 11  :Clustering on a Map 
+
+1. Drop  `Longitude` in **Columns** (Set the Measure as Longitude)
+2. Drop `Latitude` in **Rows** (Set the Measure as Latitude)
+3. Drop `Address` in **Detail**
+4. Drop `Address(Clusters)` in **Color**.
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/12.png?raw=true)
+
+------------
+
+### ✅ Report 12  : Distributions: Standard Deviation
+
+1. Drop  `Type of Sale` and `Size(Sq Ft)` in Columns
+2. Drop `Price` in **Rows**
+3. Drop 'Type of Sale' in **Color** 
+4. Drop `Address` in **Detail**.
+5. Add **Reference Line** by using the Analytics tab . Set reference line as below
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/13.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/14.png?raw=true)
+
+-----------------------
+
+### ✅ Report 13  : Standard Deviation of Price and Size
+
+1. Drop  `Size(Sq Ft)` in **Columns**
+2. Drop `Price` in **Rows**
+3. Drop 'Type of Sale' in **Color** 
+4. Drop `Address` in **Detail**.
+5. Add Reference Line by using the Analytics tab/ right clcik on the axis . Set refernce bands as below
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/15.png?raw=true)
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/15.1.png?raw=true)
+
+---------
+
+### ✅ Report 14  : Population Forecast
+
+1. Drop  `Year` in Columns
+2. Drop `Population` in Rows
+3. Drop `Country Name` in Filters (choose any countries) then drop in Color and Label.
+4. Use Forecast option from the Analytical tab. 
+
+
+![](https://github.com/Neha-Chiluka/tableau-fundamentals/blob/master/pic_9/16.png?raw=true)
+
+---------------
